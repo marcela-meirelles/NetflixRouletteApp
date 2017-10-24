@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <title>JQuery Mobile</title>
+        
+    <meta name="viewport" content=" initial-scale=1, width=device-width, height=device-height" />
+    <script src="jquery-2.2.4.min.js" type="text/javascript"></script> 
+    <script src="jqueryMobile/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="jqueryMobile/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="estilos.css" type="text/css" />
+</head>
+
+<body>
+    <!-- Pagina Principal -->
+    <section id="pagina_principal" data-role="page">
+        <header data-role="header">
+            <h1>Film Zone</h1>
+            <!-- <fieldset class="ui-grid-a"> -->
+
+                <input type="search" id="searchField" placeholder="Search">
+
+                <!-- <div class="ui-mini ui-btn-left" data-role="controlgroup" data-type="horizontal"> -->
+                <input type="button" id="btnUpdateWhat" class="ui-btn-right" data-inline="true" data-icon="arrow-r" value="Buscar" data-mini="true">
+
+                <input type="button" id="mostrarFiltros" class="ui-btn-right" data-inline="true" data-icon="gear" value="Filtros" data-mini="true">
+
+                <input type="button" id="btnVerListas" class="ui-btn-right btnVerListas" data-inline="true" data-icon="star" value="Ver Favoritos" data-mini="true">
+                <!-- </div> -->
+
+                <form id="filtros" style='display: none'>
+                    <label>
+                            <input type="radio" name="filtro" id="chkbox_none" data-mini="true" /> 
+                            None 
+                        </label>
+                    <label>
+                            <input type="radio" name="filtro" id="chkbox_director" data-mini="true" /> 
+                            Director 
+                        </label>
+                    <label>
+                            <input type="radio" name="filtro" id="chkbox_actor" data-mini="true"> Actor 
+                        </label>
+                    <!-- <label>
+                            <input type="radio" id="chkbox_genero" data-mini="true"> Genero 
+                        </label> -->
+                    <label>
+                            <input type="radio" name="filtro" id="chkbox_titulo" data-mini="true"> Titulo 
+                        </label>
+                </form>
+
+            <!-- </fieldset> -->
+        </header>
+        <div id="busqueda" class="content" data-role="content">
+            <ul id="filmList" data-role="listview" data-inset="true">
+                <!-- ui-listview-inset  class="ui-listview  ui-corner-all ui-shadow"-->
+                <!-- aca se agregan los elementos li con los resultados de la busqueda -->
+            </ul>
+        </div>
+        <footer data-role="footer" data-position="fixed" data-fullscreen="false">
+            <h4></h4>
+        </footer>
+    </section>
+
+    <!-- Film Seleccionado -->
+    <section id="film_seleccionado" data-role="page">
+        <header data-role="header">
+            <h1>Film Seleccionado</h1>
+        </header>
+        <div class="content" data-role="content">
+            <div id="peliculaSeleccionada">
+                <div id="imagenPelicula">
+                    <img src="" />
+                </div>
+                <h3 id="titulo"></h3>
+                <p id="anioRatingCategoria"></p>
+                <p id="descripcion"></p>
+                <p id="directorRepartoDuracion"></p>
+            </div>
+            <div id="favoritos">
+                <textbox placeholder="Lists"></textbox>
+
+                
+                <input type="button" class="ui-btn-right btnVerListas" data-inline="true" data-icon="star" value="Ver Favoritos" data-mini="true"> 
+                <input type="button" id='agregarAFavoritos' class="ui-btn-right" data-inline="true" data-icon="heart" value="Agregar a Favoritos" data-mini="true">
+                <select id="listasUsuarioEnPeli" class="ui-field-contain" data-role="listview">
+                <!-- cuando cambia se debe cargar la lista seleccionada -->
+                </select>
+            </div>
+
+            <input type="button" class="ui-btn-right irAInicio" data-inline="true" data-icon="arrow-l" value="Atras" data-mini="true">
+        </div>
+
+        <footer data-role="footer">
+            <p></p>
+        </footer>
+    </section>
+
+    <!-- Listas del usuario -->
+    <section id="pagina_listas" data-role="page">
+        <header data-role="header">
+            <h1>Listas de Usuario</h1>
+            <fieldset>
+                <select id="listasUsuario" class="ui-selectmenu">
+                    <!-- class="ui-field-contain" -->
+                <!-- cuando cambia se debe cargar la lista seleccionada -->
+            </select>
+                <button id='nueva_lista' class='ui-btn ui-icon-plus ui-btn-icon-left'>Agregar nueva lista</button>
+            </fieldset>
+        </header>
+        <div class="content" data-role="content">
+
+            <ul id="lista_peli_fav" data-role="listview" data-inset="true">
+                <!-- se cargan los favoritos -->
+            </ul>
+            <input type="button" class="ui-btn-right irAInicio" data-inline="true" data-icon="arrow-l" value="Atras" data-mini="true">
+        </div>
+
+        <footer data-role="footer">
+            <p></p>
+        </footer>
+    </section>
+
+    <!-- Agregar Lista -->
+    <section id="modalAgregarLista" data-role="page">
+        <header data-role="header">
+            <h1>Listas De Usuario</h1>
+        </header>
+        <div class="content" data-role="content">
+            <fieldset class="ui-grid-a">
+                <input type="text" placeholder="Nombre de Lista" id="nombreListaTxt" data-inline="true">
+                <button id='nueva_lista_aceptar' class='ui-btn ui-icon-plus ui-btn-icon-left'>Aceptar</button>
+                <button id='nueva_lista_cancelar' class='ui-btn ui-icon-plus ui-btn-icon-left'>Cancelar</button>
+            </fieldset>
+            <input type="button" class="ui-btn-right irAInicio" data-inline="true" data-icon="arrow-l" value="Atras" data-mini="true">
+        </div>
+        <footer data-role="footer">
+            <p></p>
+        </footer>
+    </section>
+
+    <!-- Datos del usuario -->
+    <section id="datos_usuario" data-role="page">
+        <header data-role="header">
+            <h1>JQMobile</h1>
+        </header>
+        <div class="content" data-role="content">
+
+            <input type="button" class="ui-btn-right irAInicio" data-inline="true" data-icon="arrow-l" value="Atras" data-mini="true">
+        </div>
+
+        <footer data-role="footer">
+            <p></p>
+        </footer>
+    </section>
+
+    <!-- conviene llamar el js siempre al final del body para que carguen las libs -->
+    <script src="obligatorio.js" type="text/javascript"></script>
+    <!-- <script type "text/javascript">
+        $(document).ready(function(){
+            app.buscarTodo();
+        });
+    </script> -->
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+/* .ul-li-thumb {
+max-height: 150px !important;
+height: 150px !important;
+}
+.listedFilm{
+    padding: 10px 10px 10px 10px !important;
+    display: block;
+} */
+
+#searchField{
+    width: 80% !important;
+}
+
+#btnUpdateWhat{
+    width: 15% !important;
+}
+
+#mostrarFiltros{
+     width: 45% !important;
+}
+
+#btnVerListas{
+     width: 45% !important;
+}
+
+#filtros{
+    width: 100%;
+}
+#filtros > label {
+    width: 33%;
+}
